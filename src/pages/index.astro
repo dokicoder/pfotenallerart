@@ -2,49 +2,320 @@
 import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import ContactForm from '../components/svelte/ContactForm.svelte';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="de">
 	<head>
 		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+		<script is:inline>
+			// Add schema.org structured data for local business
+			const jsonLd = {
+				"@context": "https://schema.org",
+				"@type": "LocalBusiness",
+				"name": "Pfoten aller Art",
+				"description": "Professionelle und liebevolle Betreuung für Haustiere aller Art in Berlin und Umgebung.",
+				"image": "/blog-placeholder-about.jpg",
+				"url": "https://pfoten-aller-art.de",
+				"telephone": "+49-30-123456789",
+				"address": {
+					"@type": "PostalAddress",
+					"streetAddress": "Beispielstraße 123",
+					"addressLocality": "Berlin",
+					"postalCode": "10115",
+					"addressCountry": "DE"
+				},
+				"geo": {
+					"@type": "GeoCoordinates",
+					"latitude": 52.5200,
+					"longitude": 13.4050
+				},
+				"priceRange": "€€",
+				"openingHoursSpecification": {
+					"@type": "OpeningHoursSpecification",
+					"dayOfWeek": [
+						"Monday",
+						"Tuesday",
+						"Wednesday",
+						"Thursday",
+						"Friday"
+					],
+					"opens": "09:00",
+					"closes": "18:00"
+				},
+				"sameAs": [
+					"https://www.facebook.com/",
+					"https://www.instagram.com/"
+				]
+			};
+			
+			const script = document.createElement('script');
+			script.setAttribute('type', 'application/ld+json');
+			script.textContent = JSON.stringify(jsonLd);
+			document.head.appendChild(script);
+		</script>
 	</head>
 	<body>
-		<Header />
-		<main>
-			<h1>🧑‍🚀 Hello, Astronaut!</h1>
-			<p>
-				Welcome to the official <a href="https://astro.build/">Astro</a> blog starter template. This
-				template serves as a lightweight, minimally-styled starting point for anyone looking to build
-				a personal website, blog, or portfolio with Astro.
-			</p>
-			<p>
-				This template comes with a few integrations already configured in your
-				<code>astro.config.mjs</code> file. You can customize your setup with
-				<a href="https://astro.build/integrations">Astro Integrations</a> to add tools like Tailwind,
-				React, or Vue to your project.
-			</p>
-			<p>Here are a few ideas on how to get started with the template:</p>
-			<ul>
-				<li>Edit this page in <code>src/pages/index.astro</code></li>
-				<li>Edit the site header items in <code>src/components/Header.astro</code></li>
-				<li>Add your name to the footer in <code>src/components/Footer.astro</code></li>
-				<li>Check out the included blog posts in <code>src/content/blog/</code></li>
-				<li>Customize the blog post page layout in <code>src/layouts/BlogPost.astro</code></li>
-			</ul>
-			<p>
-				Have fun! If you get stuck, remember to <a href="https://docs.astro.build/"
-					>read the docs
-				</a> or <a href="https://astro.build/chat">join us on Discord</a> to ask questions.
-			</p>
-			<p>
-				Looking for a blog template with a bit more personality? Check out <a
-					href="https://github.com/Charca/astro-blog-template"
-					>astro-blog-template
-				</a> by <a href="https://twitter.com/Charca">Maxi Ferreira</a>.
-			</p>
-		</main>
+		<Header title={SITE_TITLE} />
+		
+		<!-- Hero Section -->
+		<section class="hero">
+			<div class="container">
+				<h1>Pfoten aller Art</h1>
+				<p>Liebevolle und zuverlässige Betreuung für Ihr Haustier in Berlin</p>
+				<a href="#kontakt" class="btn">Kontakt aufnehmen</a>
+			</div>
+		</section>
+		
+		<!-- Über mich Section -->
+		<section id="uber-mich" class="section">
+			<div class="container">
+				<h2 class="section-title">Über mich</h2>
+				<div class="card">
+					<div class="about-content">
+						<div class="about-image">
+							<img src="/blog-placeholder-about.jpg" alt="Tiersitterin mit Haustieren" width="300" height="300" />
+						</div>
+						<div class="about-text">
+							<h3 class="card-title">Hallo, ich bin Mia!</h3>
+							<p>Seit mehr als 10 Jahren kümmere ich mich mit Herz und Seele um Haustiere aller Art. Als ausgebildete Tierpflegerin und leidenschaftliche Tierliebhaberin verstehe ich die besonderen Bedürfnisse jedes einzelnen Tieres.</p>
+							<p>Meine eigene Erfahrung mit Hunden, Katzen, Kleintieren und Vögeln hat mir geholfen, ein tiefes Verständnis für tierisches Verhalten zu entwickeln. Ich bin stolz darauf, einen Service anzubieten, bei dem Ihre pelzigen, gefiederten oder schuppigen Freunde in ihrer gewohnten Umgebung bleiben können, während Sie weg sind.</p>
+							<p>Ob Gassigehen, Fütterung, Spielzeit oder medizinische Versorgung - ich stelle sicher, dass Ihr Haustier glücklich und gesund bleibt, bis Sie wieder da sind.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		
+		<!-- Angebot Section -->
+		<section id="angebot" class="section section-alt">
+			<div class="container">
+				<h2 class="section-title">Mein Angebot</h2>
+				<div class="grid">
+					<div class="card">
+						<h3 class="card-title">Hundebetreuung</h3>
+						<p>Tägliches Gassigehen, Fütterung, Spielzeit und viel Aufmerksamkeit für Ihren vierbeinigen Freund.</p>
+						<ul class="feature-list">
+							<li>Individuelle Spaziergänge</li>
+							<li>Fütterung nach Ihren Vorgaben</li>
+							<li>Spiel und Beschäftigung</li>
+							<li>Grundlegende Pflege</li>
+						</ul>
+					</div>
+					
+					<div class="card">
+						<h3 class="card-title">Katzenbetreuung</h3>
+						<p>Regelmäßige Besuche, um Ihre Katze zu füttern, mit ihr zu spielen und ihr die Aufmerksamkeit zu geben, die sie verdient.</p>
+						<ul class="feature-list">
+							<li>Fütterung und frisches Wasser</li>
+							<li>Katzenklo reinigen</li>
+							<li>Spielzeit und Streicheleinheiten</li>
+							<li>Tägliche Updates mit Fotos</li>
+						</ul>
+					</div>
+					
+					<div class="card">
+						<h3 class="card-title">Kleintierbetreuung</h3>
+						<p>Fachkundige Betreuung für Kaninchen, Hamster, Meerschweinchen, Vögel und andere Kleintiere.</p>
+						<ul class="feature-list">
+							<li>Fütterung und Wasserwechsel</li>
+							<li>Käfigreinigung</li>
+							<li>Kontrolle des Wohlbefindens</li>
+							<li>Behutsamer Umgang und Zuwendung</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</section>
+		
+		<!-- Preise Section -->
+		<section id="preise" class="section">
+			<div class="container">
+				<h2 class="section-title">Preise</h2>
+				<div class="grid">
+					<div class="price-card">
+						<h3 class="price-title">Hundebetreuung</h3>
+						<p class="price-amount">Ab 15€</p>
+						<ul class="feature-list">
+							<li>30-minütiger Spaziergang</li>
+							<li>Fütterung inklusive</li>
+							<li>Spielzeit</li>
+							<li>Foto-Updates</li>
+						</ul>
+						<a href="#kontakt" class="btn">Anfragen</a>
+					</div>
+					
+					<div class="price-card">
+						<h3 class="price-title">Katzenbetreuung</h3>
+						<p class="price-amount">Ab 12€</p>
+						<ul class="feature-list">
+							<li>30-minütiger Besuch</li>
+							<li>Fütterung und Wasserwechsel</li>
+							<li>Katzenklo reinigen</li>
+							<li>Spielzeit und Streicheleinheiten</li>
+						</ul>
+						<a href="#kontakt" class="btn">Anfragen</a>
+					</div>
+					
+					<div class="price-card">
+						<h3 class="price-title">Kleintierbetreuung</h3>
+						<p class="price-amount">Ab 10€</p>
+						<ul class="feature-list">
+							<li>20-minütiger Besuch</li>
+							<li>Fütterung und Wasserwechsel</li>
+							<li>Käfigreinigung bei Bedarf</li>
+							<li>Gesundheitskontrolle</li>
+						</ul>
+						<a href="#kontakt" class="btn">Anfragen</a>
+					</div>
+				</div>
+				<div class="pricing-note">
+					<p>* Alle Preise verstehen sich pro Besuch. Bei regelmäßiger Buchung oder längeren Zeiträumen biete ich Rabatte an. Kontaktieren Sie mich für ein individuelles Angebot.</p>
+				</div>
+			</div>
+		</section>
+		
+		<!-- Konzept Section -->
+		<section id="konzept" class="section section-alt">
+			<div class="container">
+				<h2 class="section-title">Mein Konzept</h2>
+				<div class="card">
+					<h3 class="card-title">Warum "Pfoten aller Art"?</h3>
+					<p>Mein Betreuungskonzept basiert auf drei wichtigen Grundsätzen:</p>
+					
+					<div class="concept-grid">
+						<div class="concept-item">
+							<h4>Vertrauen</h4>
+							<p>Das Vertrauen zwischen mir, Ihnen und Ihrem Haustier ist die Basis für eine erfolgreiche Betreuung. Daher nehme ich mir vor jedem neuen Auftrag Zeit für ein kostenloses Kennenlernen.</p>
+						</div>
+						
+						<div class="concept-item">
+							<h4>Individualität</h4>
+							<p>Jedes Tier ist einzigartig und hat spezielle Bedürfnisse. Ich passe meine Betreuung an die individuellen Anforderungen Ihres Haustieres an und folge Ihren Anweisungen genau.</p>
+						</div>
+						
+						<div class="concept-item">
+							<h4>Zuverlässigkeit</h4>
+							<p>Sie können sich darauf verlassen, dass ich pünktlich und zuverlässig bin. Im Notfall bin ich immer erreichbar und halte Sie über das Wohlbefinden Ihres Tieres auf dem Laufenden.</p>
+						</div>
+					</div>
+					
+					<div class="commitment">
+						<h4>Mein Versprechen an Sie</h4>
+						<p>Ich behandle Ihr Haustier mit derselben Liebe und Sorgfalt, die ich meinen eigenen Tieren entgegenbringe. Während Ihrer Abwesenheit kann Ihr Tier in seiner vertrauten Umgebung bleiben, was Stress minimiert und für das Wohlbefinden Ihres Lieblings sorgt.</p>
+					</div>
+				</div>
+			</div>
+		</section>
+		
+		<!-- Kontakt Section -->
+		<section id="kontakt" class="section">
+			<div class="container">
+				<h2 class="section-title">Kontakt</h2>
+				<div class="contact-container">
+					<div class="contact-info">
+						<h3>Nehmen Sie Kontakt auf</h3>
+						<p>Sie haben Fragen oder möchten einen Termin vereinbaren? Kontaktieren Sie mich gerne!</p>
+						<ul class="contact-details">
+							<li><strong>Telefon:</strong> 030 123456789</li>
+							<li><strong>E-Mail:</strong> info@pfoten-aller-art.de</li>
+							<li><strong>Adresse:</strong> Beispielstraße 123, 10115 Berlin</li>
+							<li><strong>Servicegebiet:</strong> Berlin und Umgebung</li>
+						</ul>
+					</div>
+					<div class="contact-form-container">
+						<ContactForm client:load />
+					</div>
+				</div>
+			</div>
+		</section>
+		
 		<Footer />
+		
+		<style>
+			.about-content {
+				display: flex;
+				gap: 2rem;
+				align-items: center;
+			}
+			
+			.about-image {
+				flex: 0 0 300px;
+			}
+			
+			.about-image img {
+				border-radius: 50%;
+				box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+				aspect-ratio: 1 / 1;
+				object-fit: cover;
+			}
+			
+			.about-text {
+				flex: 1;
+			}
+			
+			.concept-grid {
+				display: grid;
+				grid-template-columns: repeat(3, 1fr);
+				gap: 2rem;
+				margin: 2rem 0;
+			}
+			
+			.concept-item h4 {
+				color: var(--primary);
+				margin-bottom: 1rem;
+			}
+			
+			.commitment {
+				margin-top: 2rem;
+				padding-top: 2rem;
+				border-top: 1px solid #eee;
+			}
+			
+			.pricing-note {
+				margin-top: 2rem;
+				text-align: center;
+				font-size: 0.9rem;
+				color: #666;
+			}
+			
+			.contact-container {
+				display: grid;
+				grid-template-columns: 1fr 1fr;
+				gap: 3rem;
+				align-items: start;
+			}
+			
+			.contact-details {
+				list-style: none;
+				padding: 0;
+				margin: 2rem 0;
+			}
+			
+			.contact-details li {
+				margin-bottom: 1rem;
+			}
+			
+			@media (max-width: 768px) {
+				.about-content {
+					flex-direction: column;
+					text-align: center;
+				}
+				
+				.about-image {
+					margin-bottom: 2rem;
+				}
+				
+				.concept-grid {
+					grid-template-columns: 1fr;
+				}
+				
+				.contact-container {
+					grid-template-columns: 1fr;
+				}
+			}
+		</style>
 	</body>
 </html>
