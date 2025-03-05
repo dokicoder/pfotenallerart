@@ -1,9 +1,9 @@
 ---
-import BaseHead from '../components/BaseHead.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
-import ContactForm from '../components/svelte/ContactForm.svelte';
-import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+import BaseHead from "../components/BaseHead.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import ContactForm from "../components/svelte/ContactForm.svelte";
+import { SITE_TITLE, SITE_DESCRIPTION, PHONE_NUMBER, EMAIL_ADDRESS, ADDRESS, AREA } from "../consts";
 ---
 
 <!doctype html>
@@ -15,60 +15,66 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 			const jsonLd = {
 				"@context": "https://schema.org",
 				"@type": "LocalBusiness",
-				"name": "Pfoten aller Art",
-				"description": "Professionelle und liebevolle Betreuung für Haustiere aller Art in Berlin und Umgebung.",
-				"image": "/blog-placeholder-about.jpg",
-				"url": "https://pfoten-aller-art.de",
-				"telephone": "+49-30-123456789",
-				"address": {
+				name: "Pfoten aller Art",
+				description:
+					"Professionelle und liebevolle Betreuung für Haustiere aller Art in WInterthur und Umgebung.",
+				image: "/blog-placeholder-about.jpg",
+				url: "https://pfotenallerart.ch",
+				telephone: "+49-30-123456789",
+				address: {
 					"@type": "PostalAddress",
-					"streetAddress": "Beispielstraße 123",
-					"addressLocality": "Berlin",
-					"postalCode": "10115",
-					"addressCountry": "DE"
+					streetAddress: "Beispielstraße 123",
+					addressLocality: "Winterthur",
+					postalCode: "8404",
+					addressCountry: "CH",
 				},
-				"geo": {
+				geo: {
 					"@type": "GeoCoordinates",
-					"latitude": 52.5200,
-					"longitude": 13.4050
+					latitude: 47.505685502,
+					longitude: 8.76422135,
 				},
-				"priceRange": "€€",
-				"openingHoursSpecification": {
+				priceRange: "€€",
+				openingHoursSpecification: {
 					"@type": "OpeningHoursSpecification",
-					"dayOfWeek": [
+					dayOfWeek: [
 						"Monday",
 						"Tuesday",
 						"Wednesday",
 						"Thursday",
-						"Friday"
+						"Friday",
+						"Saturday",
+						"Sunday",
 					],
-					"opens": "09:00",
-					"closes": "18:00"
+					opens: "08:00",
+					closes: "22:00",
 				},
-				"sameAs": [
+				sameAs: [
 					"https://www.facebook.com/",
-					"https://www.instagram.com/"
-				]
+					"https://www.instagram.com/",
+				],
 			};
-			
-			const script = document.createElement('script');
-			script.setAttribute('type', 'application/ld+json');
+
+			const script = document.createElement("script");
+			script.setAttribute("type", "application/ld+json");
 			script.textContent = JSON.stringify(jsonLd);
 			document.head.appendChild(script);
 		</script>
 	</head>
 	<body>
 		<Header title={SITE_TITLE} />
-		
+
 		<!-- Hero Section -->
 		<section class="hero">
 			<div class="container">
 				<h1>Pfoten aller Art</h1>
-				<p>Liebevolle und zuverlässige Betreuung für Ihr Haustier in Berlin</p>
-				<a href="#kontakt" class="btn">Kontakt aufnehmen</a>
+				<p>
+					Liebevolle und zuverlässige Betreuung für Ihr Haustier<br />
+					in Winterthur Hegi
+				</p>
+				<a href="#kontakt" class="btn">Gespräch vereinbaren</a>
 			</div>
 		</section>
-		
+
 		<!-- Über mich Section -->
 		<section id="uber-mich" class="section">
 			<div class="container">
@@ -76,19 +82,45 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 				<div class="card">
 					<div class="about-content">
 						<div class="about-image">
-							<img src="/blog-placeholder-about.jpg" alt="Tiersitterin mit Haustieren" width="300" height="300" />
+							<img
+								src="/blog-placeholder-about.jpg"
+								alt="Tiersitterin mit Haustieren"
+								width="300"
+								height="300"
+							/>
 						</div>
 						<div class="about-text">
-							<h3 class="card-title">Hallo, ich bin Mia!</h3>
-							<p>Seit mehr als 10 Jahren kümmere ich mich mit Herz und Seele um Haustiere aller Art. Als ausgebildete Tierpflegerin und leidenschaftliche Tierliebhaberin verstehe ich die besonderen Bedürfnisse jedes einzelnen Tieres.</p>
-							<p>Meine eigene Erfahrung mit Hunden, Katzen, Kleintieren und Vögeln hat mir geholfen, ein tiefes Verständnis für tierisches Verhalten zu entwickeln. Ich bin stolz darauf, einen Service anzubieten, bei dem Ihre pelzigen, gefiederten oder schuppigen Freunde in ihrer gewohnten Umgebung bleiben können, während Sie weg sind.</p>
-							<p>Ob Gassigehen, Fütterung, Spielzeit oder medizinische Versorgung - ich stelle sicher, dass Ihr Haustier glücklich und gesund bleibt, bis Sie wieder da sind.</p>
+							<h3 class="card-title">
+								Hallo, ich bin Alexandra!
+							</h3>
+							<p>
+								Seit mehr als 10 Jahren kümmere ich mich mit
+								Herz und Seele um Haustiere aller Art. Als
+								ausgebildete Tierpflegerin und leidenschaftliche
+								Tierliebhaberin verstehe ich die besonderen
+								Bedürfnisse jedes einzelnen Tieres.
+							</p>
+							<p>
+								Meine eigene Erfahrung mit Hunden, Katzen,
+								Kleintieren und Vögeln hat mir geholfen, ein
+								tiefes Verständnis für tierisches Verhalten zu
+								entwickeln. Ich bin stolz darauf, einen Service
+								anzubieten, bei dem Ihre pelzigen, gefiederten
+								oder schuppigen Freunde in ihrer gewohnten
+								Umgebung bleiben können, während Sie weg sind.
+							</p>
+							<p>
+								Ob Gassigehen, Fütterung, Spielzeit oder
+								medizinische Versorgung - ich stelle sicher,
+								dass Ihr Haustier glücklich und gesund bleibt,
+								bis Sie wieder da sind.
+							</p>
 						</div>
 					</div>
 				</div>
 			</div>
 		</section>
-		
+
 		<!-- Angebot Section -->
 		<section id="angebot" class="section section-alt">
 			<div class="container">
@@ -96,7 +128,10 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 				<div class="grid">
 					<div class="card">
 						<h3 class="card-title">Hundebetreuung</h3>
-						<p>Tägliches Gassigehen, Fütterung, Spielzeit und viel Aufmerksamkeit für Ihren vierbeinigen Freund.</p>
+						<p>
+							Tägliches Gassigehen, Fütterung, Spielzeit und viel
+							Aufmerksamkeit für Ihren vierbeinigen Freund.
+						</p>
 						<ul class="feature-list">
 							<li>Individuelle Spaziergänge</li>
 							<li>Fütterung nach Ihren Vorgaben</li>
@@ -104,10 +139,14 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 							<li>Grundlegende Pflege</li>
 						</ul>
 					</div>
-					
+
 					<div class="card">
 						<h3 class="card-title">Katzenbetreuung</h3>
-						<p>Regelmäßige Besuche, um Ihre Katze zu füttern, mit ihr zu spielen und ihr die Aufmerksamkeit zu geben, die sie verdient.</p>
+						<p>
+							Regelmäßige Besuche, um Ihre Katze zu füttern, mit
+							ihr zu spielen und ihr die Aufmerksamkeit zu geben,
+							die sie verdient.
+						</p>
 						<ul class="feature-list">
 							<li>Fütterung und frisches Wasser</li>
 							<li>Katzenklo reinigen</li>
@@ -115,10 +154,13 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 							<li>Tägliche Updates mit Fotos</li>
 						</ul>
 					</div>
-					
+
 					<div class="card">
 						<h3 class="card-title">Kleintierbetreuung</h3>
-						<p>Fachkundige Betreuung für Kaninchen, Hamster, Meerschweinchen, Vögel und andere Kleintiere.</p>
+						<p>
+							Fachkundige Betreuung für Kaninchen, Hamster,
+							Meerschweinchen, Vögel und andere Kleintiere.
+						</p>
 						<ul class="feature-list">
 							<li>Fütterung und Wasserwechsel</li>
 							<li>Käfigreinigung</li>
@@ -129,7 +171,7 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 				</div>
 			</div>
 		</section>
-		
+
 		<!-- Preise Section -->
 		<section id="preise" class="section">
 			<div class="container">
@@ -137,16 +179,17 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 				<div class="grid">
 					<div class="price-card">
 						<h3 class="price-title">Hundebetreuung</h3>
-						<p class="price-amount">Ab 15€</p>
+						<p class="price-amount">30 CHF</p>
 						<ul class="feature-list">
-							<li>30-minütiger Spaziergang</li>
+							<li>60-minütiger Spaziergang</li>
+							<li>Nach Absprache allein oder in der Gruppe</li>
 							<li>Fütterung inklusive</li>
 							<li>Spielzeit</li>
 							<li>Foto-Updates</li>
 						</ul>
 						<a href="#kontakt" class="btn">Anfragen</a>
 					</div>
-					
+
 					<div class="price-card">
 						<h3 class="price-title">Katzenbetreuung</h3>
 						<p class="price-amount">Ab 12€</p>
@@ -158,7 +201,7 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 						</ul>
 						<a href="#kontakt" class="btn">Anfragen</a>
 					</div>
-					
+
 					<div class="price-card">
 						<h3 class="price-title">Kleintierbetreuung</h3>
 						<p class="price-amount">Ab 10€</p>
@@ -172,44 +215,74 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 					</div>
 				</div>
 				<div class="pricing-note">
-					<p>* Alle Preise verstehen sich pro Besuch. Bei regelmäßiger Buchung oder längeren Zeiträumen biete ich Rabatte an. Kontaktieren Sie mich für ein individuelles Angebot.</p>
+					<p>
+						* Alle Preise verstehen sich pro Besuch. Bei
+						regelmäßiger Buchung oder längeren Zeiträumen biete ich
+						Rabatte an. Kontaktieren Sie mich für ein individuelles
+						Angebot.
+					</p>
 				</div>
 			</div>
 		</section>
-		
+
 		<!-- Konzept Section -->
 		<section id="konzept" class="section section-alt">
 			<div class="container">
 				<h2 class="section-title">Mein Konzept</h2>
 				<div class="card">
 					<h3 class="card-title">Warum "Pfoten aller Art"?</h3>
-					<p>Mein Betreuungskonzept basiert auf drei wichtigen Grundsätzen:</p>
-					
+					<p>
+						Mein Betreuungskonzept basiert auf drei wichtigen
+						Grundsätzen:
+					</p>
+
 					<div class="concept-grid">
 						<div class="concept-item">
 							<h4>Vertrauen</h4>
-							<p>Das Vertrauen zwischen mir, Ihnen und Ihrem Haustier ist die Basis für eine erfolgreiche Betreuung. Daher nehme ich mir vor jedem neuen Auftrag Zeit für ein kostenloses Kennenlernen.</p>
+							<p>
+								Das Vertrauen zwischen mir, Ihnen und Ihrem
+								Haustier ist die Basis für eine erfolgreiche
+								Betreuung. Daher nehme ich mir vor jedem neuen
+								Auftrag Zeit für ein kostenloses Kennenlernen.
+							</p>
 						</div>
-						
+
 						<div class="concept-item">
 							<h4>Individualität</h4>
-							<p>Jedes Tier ist einzigartig und hat spezielle Bedürfnisse. Ich passe meine Betreuung an die individuellen Anforderungen Ihres Haustieres an und folge Ihren Anweisungen genau.</p>
+							<p>
+								Jedes Tier ist einzigartig und hat spezielle
+								Bedürfnisse. Ich passe meine Betreuung an die
+								individuellen Anforderungen Ihres Haustieres an
+								und folge Ihren Anweisungen genau.
+							</p>
 						</div>
-						
+
 						<div class="concept-item">
 							<h4>Zuverlässigkeit</h4>
-							<p>Sie können sich darauf verlassen, dass ich pünktlich und zuverlässig bin. Im Notfall bin ich immer erreichbar und halte Sie über das Wohlbefinden Ihres Tieres auf dem Laufenden.</p>
+							<p>
+								Sie können sich darauf verlassen, dass ich
+								pünktlich und zuverlässig bin. Im Notfall bin
+								ich immer erreichbar und halte Sie über das
+								Wohlbefinden Ihres Tieres auf dem Laufenden.
+							</p>
 						</div>
 					</div>
-					
+
 					<div class="commitment">
 						<h4>Mein Versprechen an Sie</h4>
-						<p>Ich behandle Ihr Haustier mit derselben Liebe und Sorgfalt, die ich meinen eigenen Tieren entgegenbringe. Während Ihrer Abwesenheit kann Ihr Tier in seiner vertrauten Umgebung bleiben, was Stress minimiert und für das Wohlbefinden Ihres Lieblings sorgt.</p>
+						<p>
+							Ich behandle Ihr Haustier mit derselben Liebe und
+							Sorgfalt, die ich meinen eigenen Tieren
+							entgegenbringe. Während Ihrer Abwesenheit kann Ihr
+							Tier in seiner vertrauten Umgebung bleiben, was
+							Stress minimiert und für das Wohlbefinden Ihres
+							Lieblings sorgt.
+						</p>
 					</div>
 				</div>
 			</div>
 		</section>
-		
+
 		<!-- Kontakt Section -->
 		<section id="kontakt" class="section">
 			<div class="container">
@@ -217,12 +290,22 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 				<div class="contact-container">
 					<div class="contact-info">
 						<h3>Nehmen Sie Kontakt auf</h3>
-						<p>Sie haben Fragen oder möchten einen Termin vereinbaren? Kontaktieren Sie mich gerne!</p>
+						<p>
+							Du hast Fragen oder möchtest ein Kennenlernen mit deinem pelzohrigen Freund
+							vereinbaren? Ich freue mich auf deine Nachricht.
+						</p>
 						<ul class="contact-details">
-							<li><strong>Telefon:</strong> 030 123456789</li>
-							<li><strong>E-Mail:</strong> info@pfoten-aller-art.de</li>
-							<li><strong>Adresse:</strong> Beispielstraße 123, 10115 Berlin</li>
-							<li><strong>Servicegebiet:</strong> Berlin und Umgebung</li>
+							<li><strong>Telefon:</strong> {PHONE_NUMBER}</li>
+							<li>
+								<strong>E-Mail:</strong> {EMAIL_ADDRESS}
+							</li>
+							<li>
+								<strong>Adresse:</strong> {ADDRESS}
+							</li>
+							<li>
+								<strong>Servicegebiet:</strong> {AREA} und
+								Umgebung
+							</li>
 						</ul>
 					</div>
 					<div class="contact-form-container">
@@ -231,87 +314,87 @@ import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
 				</div>
 			</div>
 		</section>
-		
+
 		<Footer />
-		
+
 		<style>
 			.about-content {
 				display: flex;
 				gap: 2rem;
 				align-items: center;
 			}
-			
+
 			.about-image {
 				flex: 0 0 300px;
 			}
-			
+
 			.about-image img {
 				border-radius: 50%;
-				box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+				box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 				aspect-ratio: 1 / 1;
 				object-fit: cover;
 			}
-			
+
 			.about-text {
 				flex: 1;
 			}
-			
+
 			.concept-grid {
 				display: grid;
 				grid-template-columns: repeat(3, 1fr);
 				gap: 2rem;
 				margin: 2rem 0;
 			}
-			
+
 			.concept-item h4 {
 				color: var(--primary);
 				margin-bottom: 1rem;
 			}
-			
+
 			.commitment {
 				margin-top: 2rem;
 				padding-top: 2rem;
 				border-top: 1px solid #eee;
 			}
-			
+
 			.pricing-note {
 				margin-top: 2rem;
 				text-align: center;
 				font-size: 0.9rem;
 				color: #666;
 			}
-			
+
 			.contact-container {
 				display: grid;
 				grid-template-columns: 1fr 1fr;
 				gap: 3rem;
 				align-items: start;
 			}
-			
+
 			.contact-details {
 				list-style: none;
 				padding: 0;
 				margin: 2rem 0;
 			}
-			
+
 			.contact-details li {
 				margin-bottom: 1rem;
 			}
-			
+
 			@media (max-width: 768px) {
 				.about-content {
 					flex-direction: column;
 					text-align: center;
 				}
-				
+
 				.about-image {
 					margin-bottom: 2rem;
 				}
-				
+
 				.concept-grid {
 					grid-template-columns: 1fr;
 				}
-				
+
 				.contact-container {
 					grid-template-columns: 1fr;
 				}
